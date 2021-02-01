@@ -1,0 +1,28 @@
+def percentile_to_val(data,per_tile):
+	data.sort()
+	#Setting the index of the per_tile
+	loc = (per_tile/100)*(len(data)+1)
+	# caculating if float of not
+	if str(loc)[-1] == "0":
+		loc = round(int(loc))
+	# if float it will change the output to avg of two numbers
+	print(loc)
+	output = data[int(loc)-1]
+	if type(loc) == float:
+		ans = (data[int(loc)-1] + data[int(loc)]) / 2
+		output = ans
+	#Printing the percentile
+	print(f"The {per_tile}th percentile is {output}")
+	
+def val_to_percentile(data,index):
+	data.sort()
+	#Calculating the fomula
+	ans = ((len(data[:index])+0.5*data.count(data[index])) / len(data)) * 100
+	print(f"The percentile of {data[index]} is {round(ans)}")
+
+data = []
+for i in range(1,10000):
+	data.append(i)
+print(data)
+percentile_to_val(data,50)
+val_to_percentile(data,4999)

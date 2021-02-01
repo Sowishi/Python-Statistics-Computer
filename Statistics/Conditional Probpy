@@ -1,0 +1,40 @@
+def info(target,data):
+	table = {}
+	key = []
+	for i in data:
+		label = i.split("|")
+		table[label[0].strip()] = int(label[1].strip())
+		key.append(label[0].strip())
+	label = []
+	for j in key:
+		split = j.split("_")
+		output = split[1]
+		label.append(output.strip())
+	total_outcome = 0
+	for x,val in table.items():
+		total_outcome += val
+	sum_hori1= table[key[0]] + table[key[1]]
+	sum_hori2 = table[key[2]] + table[key[3]]
+	sum_verti1 =table[key[0]] + table[key[2]]
+	sum_verti2 = table[key[1]] + table[key[3]]
+	table[label[0]] = sum_hori1
+	table[label[1]] = sum_hori2
+	table[label[2]] = sum_verti1
+	table[label[3]] = sum_verti2
+	table["total"] = total_outcome
+	table[None] = None
+	return table[target]
+
+table = ["male_brownE | 70","male_blueE | 20", "female_brownE | 100","female_blueE | 10"]
+info(None , table)
+
+def get_info(data):
+	return info(data,table)
+	
+def probability(x):
+	print(f"Probability of selecting {x}: ",end="")
+	print(get_info(x) / get_info("total") * 100,"%")
+
+probability("brownE")
+	
+	

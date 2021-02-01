@@ -1,0 +1,16 @@
+def quali_or_not(data):
+	#Identify if the data is whole number
+	if type(data) == int or type(data) == float:
+		#print quanti because the data is #
+		print(f"Quantitative: {data}")
+		#check if continous or discrete
+		if type(data) != float:
+			print(f"Discrete: {data}")
+		else:
+			print(f"Continuos: {data}")
+	else:
+			print(f"Qualiative {data}")
+			
+			
+quali_or_not(1.5)
+	

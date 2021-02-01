@@ -1,0 +1,14 @@
+def f_table(data):
+	table = {}
+	data.sort()
+	print(f"Data set: {data}")
+	print("Frequency Table:")
+	print("Value	Frequency")
+	for i in data:
+		freq = data.count(i)
+		table[i] = freq
+	for key,val in table.items():
+		print(f"{key}	{val}")
+	
+	
+f_table([1,1,1,5,5,6,6,7])
